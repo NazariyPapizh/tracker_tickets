@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ticket_status.name %>
+</p>
+<% if @ticket_status.initiation %>
+    <p>
+      <strong>Initiation:</strong>
+      <%= @ticket_status.initiation %>
+    </p>
+<% end %>
+<%= link_to 'Edit', edit_ticket_status_path(@ticket_status) %> |
+<%= link_to 'Back', ticket_statuses_path %>

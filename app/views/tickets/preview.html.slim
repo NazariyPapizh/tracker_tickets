@@ -1,0 +1,45 @@
+.row
+  .medium-6.medium-centered.columns
+    h3 hello its your ticket!
+    .row
+      .medium-3.columns
+        i
+          |Status:
+      .medium-9.columns
+        p
+          =@your_ticket.ticket_status.name
+    .row
+      .medium-3.columns
+        i
+          |Name:
+      .medium-9.columns
+        p
+          =@your_ticket.name
+    .row
+      .medium-3.columns
+        i
+          |Department:
+      .medium-9.columns
+        p
+          =@your_ticket.department.name
+    .row
+      .medium-3.columns
+        i
+          |Email:
+      .medium-9.columns
+        p
+          =@your_ticket.email
+    .row
+      .medium-3.columns
+        i
+          |Subject:
+      .medium-9.columns
+        p
+          =@your_ticket.subject
+    .row
+      .medium-3.columns
+        i
+          |Full body:
+      .medium-9.columns
+        p
+          =@your_ticket.full_body

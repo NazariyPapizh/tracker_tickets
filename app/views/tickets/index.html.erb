@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tickets</h1>
+
+<%#
+  Filterrific adds the `form_for_filterrific` view helper:
+  * adds dom id 'filterrific_filter'
+  * applies javascript behaviors:
+      * AJAX form submission on change
+      * AJAX spinner while AJAX request is being processed
+  * sets form_for options like :url, :method and input name prefix
+%>
+<%= form_for_filterrific @filterrific do |f| %>
+  <div class="row">
+    <div class="columns">
+    Search
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+    </div>
+  </div>
+    <div class="row">
+      <div class="medium-3 columns">
+
+      Department
+      <%= f.select(
+                  :with_department,
+                  @filterrific.select_options[:with_department],
+                  { include_blank: '- Any -' }
+          ) %>
+    </div>
+      <div class="medium-3 columns">
+    Ticket Status
+    <%= f.select(
+      :with_status,
+      @filterrific.select_options[:with_status],
+      { include_blank: '- Any -' }
+    ) %>
+  </div>
+
+      <div class="medium-3 columns">
+      Registered after
+      <%= f.text_field(:with_created_at_gte, class: 'js-datepicker') %>
+    </div>
+
+      <div class="medium-3 columns">
+    Sorted by
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+  </div>
+
+    </div>
+  <div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+  <%# add an automated spinner to your form when the list is refreshed %>
+  <%= render_filterrific_spinner %>
+<% end %>
+
+<%= render(
+  partial: 'tickets/list',
+  locals: { tickets: @tickets }
+) %>

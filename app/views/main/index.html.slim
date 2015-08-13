@@ -1,0 +1,19 @@
+.index-page
+  .row
+    .medium-6.medium-centered.columns
+      = simple_form_for(@ticket) do |f|
+        = f.error_notification
+
+        .form-inputs
+          = f.input :name, :input_html => {:placeholder => 'enter your name'}
+          = f.association :department
+          = f.input :email, :input_html => {:placeholder => 'enter your email'}
+          = f.input :subject, :input_html => {:placeholder => 'enter subject'}
+          = f.input :full_body, :input_html => {:rows => 10, :placeholder => 'enter your message'}
+
+        .form-actions.right
+          = f.button :submit, class: "button small radius"
+
+  .row
+    .columns
+      -@tickets
